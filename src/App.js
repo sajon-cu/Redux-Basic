@@ -1,6 +1,6 @@
-import store from './store';
+// import store from './store';
 // import * as actions from './actionTypes';
-import {bugAdded, bugRemoved, bugResolved} from './actionCreator'
+// import {bugAdded, bugRemoved, bugResolved} from './actionCreator'
 
 
 // store.subscribe(()=>{
@@ -34,17 +34,31 @@ store.dispatch({
 
 // another way of using actionCreator
 
-store.dispatch(bugAdded('Bug 1'));
-store.dispatch(bugAdded('Bug 2'));
-store.dispatch(bugAdded('Bug 3'));
-store.dispatch(bugAdded('Bug 4'));
+// store.dispatch(bugAdded('Bug 1'));
+// store.dispatch(bugAdded('Bug 2'));
+// store.dispatch(bugAdded('Bug 3'));
+// store.dispatch(bugAdded('Bug 4'));
 
 //store.dispatch(bugRemoved(1));
-store.dispatch(bugResolved(1))
-store.dispatch(bugResolved(4))
+// store.dispatch(bugResolved(1))
+// store.dispatch(bugResolved(4))
 
 
-console.log(store.getState());
+// console.log(store.getState());
+
+import {bugAdded, bugRemoved, bugResolved} from './actionCreator'
+import store from "./customStore";
+
+store.subscribe(() => {
+  console.log('Changed State')
+});
+
+store.dispatch(bugAdded("New bug"));
+store.dispatch(bugAdded("Another bug"));
+
+console.log(store.getState())
+
+
 
 function App() {
   return (
