@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+import entitiesReducer from './entities';
 import * as actions from './actionTypes';
 // []
 let lastId = 0;
@@ -23,7 +25,7 @@ export default function reducer(state = [], action) {
 */
 
 // Another way
-export default function reducer(state = [], action) {
+/*export default function reducer(state = [], action) {
     switch(action.type) {
         case actions.BUG_ADDED:
             return [
@@ -45,3 +47,8 @@ export default function reducer(state = [], action) {
             return state;
     }
 }
+*/
+
+export default combineReducers({
+    entities: entitiesReducer
+});

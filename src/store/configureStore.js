@@ -3,7 +3,8 @@
 // import reducer from "./reducer";
 
 import { configureStore } from '@reduxjs/toolkit';
-import reducer from './projects';
+// import reducer from './projects';
+import reducer from './reducer';
 
 /*
 const store = createStore(
