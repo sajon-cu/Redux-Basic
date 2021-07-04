@@ -46,19 +46,32 @@ store.dispatch({
 
 // console.log(store.getState());
 
-import {bugAdded, bugRemoved, bugResolved} from './actionCreator'
-import store from "./customStore";
+import configureStore from './store/configureStore';
+import * as actions from './store/bugs';
+import {projectAdded} from './store/projects'
+
+//import {bugAdded, bugRemoved, bugResolved} from './actionCreator'
+//import store from "./customStore";
+
+const store = configureStore();
 
 store.subscribe(() => {
   console.log('Changed State')
 });
 
-store.dispatch(bugAdded("New bug"));
-store.dispatch(bugAdded("Another bug"));
+// store.dispatch(actions.bugAdded("New bug"));
+// store.dispatch(actions.bugAdded("Another bug"));
+// store.dispatch(actions.bugAdded("Push notification not working"));
+
+store.dispatch(actions.bugAdded({ description: "New bug" }));
+store.dispatch(actions.bugAdded({ description: "Another bug" }));
+store.dispatch(actions.bugAdded({ description: "Push notification not working" }));
+store.dispatch(actions.bugResolved({ id: 1 }));
+store.dispatch(actions.bugResolved({ id: 1 }));
+
+store.dispatch(projectAdded({name: 'Project 1'}))
 
 console.log(store.getState())
-
-
 
 function App() {
   return (
